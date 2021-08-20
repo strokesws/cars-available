@@ -31,7 +31,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.css$/,
+        test: /\.scss$/,
         exclude: /node_modules/,
         use: [
           {
@@ -43,6 +43,7 @@ module.exports = {
               importLoaders: 1,
             },
           },
+          "sass-loader",
           {
             loader: "postcss-loader",
           },
