@@ -32,7 +32,9 @@
     "webpack-dev-server": "^3.11.0"
   },
   "dependencies": {
+    "core-js": "^3.16.2",
     "lodash": "^4.17.19",
+    "regenerator-runtime": "^0.13.9",
     "tailwindcss": "^1.4.6"
   }
 }
