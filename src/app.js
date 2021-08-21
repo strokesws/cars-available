@@ -40,6 +40,8 @@ document.addEventListener("DOMContentLoaded", async () => {
    */
   const renderCarList = (carList) => {
     const template = document.querySelector("#car-card-template");
+    // To be used in the currency format
+    const locale = window.navigator.userLanguage || window.navigator.language;
 
     carList.forEach((car) => {
       const clone = template.content.cloneNode(true);
@@ -67,13 +69,19 @@ document.addEventListener("DOMContentLoaded", async () => {
       clone
         .querySelector(".car-card__picture")
         .setAttribute("src", Vehicle.PictureURL);
-      // CURRENCY
-      clone.querySelector(".car-card__currency").textContent =
-        car.TotalCharge["@CurrencyCode"];
-      // ESTIMATED TOTAL
-      clone.querySelector(".car-card__value").textContent =
-        car.TotalCharge["@EstimatedTotalAmount"];
 
+      // ESTIMATED TOTAL
+      const currencyOptions = {
+        currency: car.TotalCharge["@CurrencyCode"],
+        style: "currency",
+      };
+      const estimatedTotal = new Intl.NumberFormat(
+        locale,
+        currencyOptions
+      ).format(car.TotalCharge["@EstimatedTotalAmount"]);
+      clone.querySelector(".car-card__value").textContent = estimatedTotal;
+
+      // render
       const carGrid = document.querySelector("#car-grid");
       carGrid.appendChild(clone);
     });
