@@ -5,6 +5,14 @@ import "./styles/styles.scss";
 
 document.addEventListener("DOMContentLoaded", async () => {
   /*
+   * Remove loader and displays car grid
+   */
+  const removeLoader = () => {
+    document.querySelector(".loader").remove();
+    const carGrid = document.querySelector("#car-grid");
+    carGrid.classList.remove("hidden");
+  };
+  /*
    * Get list of car availabl
    * @return {array | null} Booking meta data and cars available
    */
@@ -89,7 +97,8 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   const data = await getCars();
 
-  if (!data && !data.length) return;
+  if (!data && !data.length) return removeLoader();
   const flatCarList = parseCarList(data[0].VehAvailRSCore.VehVendorAvails);
   renderCarList(flatCarList);
+  removeLoader();
 });
