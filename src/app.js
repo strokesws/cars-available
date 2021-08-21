@@ -43,6 +43,24 @@ document.addEventListener("DOMContentLoaded", async () => {
     }, []);
 
   /*
+   * Sorts list of cars
+   * @param {array} Flat list of cars
+   * @param {string} Property to sort by: prince
+   * @return {array} Sorted carList
+   */
+  const sortList = (carList, sortBy) =>
+    carList.sort((a, b) => {
+      switch (sortBy) {
+        case "price":
+        default:
+          return (
+            +a.TotalCharge["@EstimatedTotalAmount"] -
+            +b.TotalCharge["@EstimatedTotalAmount"]
+          );
+          break;
+      }
+    });
+  /*
    * Renders list of cars on the HTML
    * @param {array} carList List of cars to be rendered
    */
@@ -99,6 +117,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   if (!data && !data.length) return removeLoader();
   const flatCarList = parseCarList(data[0].VehAvailRSCore.VehVendorAvails);
-  renderCarList(flatCarList);
+  const sortedList = sortList(flatCarList, "price");
+  renderCarList(sortedList);
   removeLoader();
 });
