@@ -5,56 +5,58 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="shortcut icon" type="image/x-icon" href="./images/favicon.ico" sizes="64x64" />
+  <link rel="stylesheet" href="//cdn.materialdesignicons.com/5.4.55/css/materialdesignicons.min.css">
   <title>Webpack Boilerplate</title>
 </head>
 
 <body>
-  <nav class="flex items-center content-center justify-center flex-wrap bg-blue-500 p-6">
-    <div class="flex items-center flex-shrink-0 text-white mr-6">
-      <span class="font-semibold text-xl tracking-tight subpixel-antialiased">Webpack Boilerplate</span>
-    </div>
-  </nav>
-  <section class="flex flex-wrap overflow-hidden justify-center">
-    <div class="w-full sm:w-1/3 md:w-1/3 lg:w-1/4 xl:w-1/4 rounded overflow-hidden shadow-lg bg-white mx-3 my-6">
-      <img class="w-full h-48 self-center" src="./images/logo-on-white-bg.png" alt="webpack" />
-      <div class="px-6 py-4">
-        <div class="font-bold text-xl mb-2">webpack</div>
-        <p class="text-gray-700 text-base">
-          webpack is a module bundler. Its main purpose is to bundle
-          JavaScript files for usage in a browser, yet it is also capable of
-          transforming, bundling, or packaging just about any resource or
-          asset.
-        </p>
-      </div>
-    </div>
-    <div class="w-full sm:w-1/3 md:w-1/3 lg:w-1/4 xl:w-1/4 rounded overflow-hidden shadow-lg bg-white mx-3 my-6">
-      <img class="w-full h-52 self-center" src="./images/tailwind.jpg" alt="Tailwind CSS" />
-      <div class="px-6 py-4">
-        <div class="font-bold text-xl mb-2">Tailwind CSS</div>
-        <p class="text-gray-700 text-base">
-          Tailwind CSS is a highly customizable, low-level CSS framework that
-          gives you all of the building blocks you need to build bespoke
-          designs without any annoying opinionated styles you have to fight to
-          override.
-        </p>
-      </div>
-    </div>
+  <div id="app" class="container mx-auto min min-h-screen">
+    <div id="car-grid" class="grid grid-cols-3"> </div>
+  </div>
 
-    <div class="w-full sm:w-1/3 md:w-1/3 lg:w-1/4 xl:w-1/4 rounded overflow-hidden shadow-lg bg-white mx-3 my-6">
-      <img class="w-full h-48" src="./images/Babel_Logo.svg" alt="Babel" />
-      <div class="px-6 py-4">
-        <div class="font-bold text-xl mb-2">Babel</div>
-        <p class="text-gray-700 text-base">
-          Babel is a JavaScript compiler. Use next generation JavaScript,
-          today.
-        </p>
-      </div>
-    </div>
-  </section>
-  <section class="flex flex-wrap justify-center mt-6">
-    <code
-      class="text-2xl sm:text-4xl text-center">Edit <span class="bg-gray-300 italic">src</span> folder to start!</code>
-  </section>
+
 </body>
+
+
+<template id="car-card-template">
+  <div class="car-card m-2 p-4 bg-blue-500 rounded-md">
+    <h2 class="car-card__name"></h2>
+
+    <p>
+      <span class="car-card__transmission-type"></span>
+
+      <span class="car-card__fuel-type"></span>
+    </p>
+
+    <p>
+      <span class="mr-1">
+        <span class="sr-only">Passenger Quantity:</span>
+        <span class="mdi mdi-car-seat"></span>
+        <span class="car-card__passenger-quantity"></span>
+      </span>
+
+      <span class="mr-1">
+        <span class="sr-only">Baggage Quantity:</span>
+        <span class="mdi mdi-briefcase"></span>
+        <span class="car-card__baggage-quantity"></span>
+      </span>
+
+      <span class="mr-1">
+        <span class="sr-only">Door count:</span>
+        <span class="mdi mdi-car-door"></span>
+        <span class="car-card__door-count"></span>
+      </span>
+    </p>
+
+    <img class="car-card__picture object-contain my-6" />
+
+    <span class="car-card__value">
+      <sup class="car-card__currency"></sup>
+
+    </span>
+
+    <button type="button">More Details</button>
+  </div>
+</template>
 
 </html>
