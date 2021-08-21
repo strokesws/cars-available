@@ -91,6 +91,14 @@ const renderCarList = (carList) => {
     // DOOR COUNT
     clone.querySelector(".car-card__door-count").textContent =
       Vehicle["@DoorCount"];
+
+    // AIR CONDITIONING
+    if (!!Vehicle["@AirConditionInd"]) {
+      clone
+        .querySelector(".car-card__air-conditioning")
+        .classList.remove("hidden");
+    }
+
     // PICTURE
     clone
       .querySelector(".car-card__picture")
