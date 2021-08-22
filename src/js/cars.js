@@ -20,8 +20,10 @@ export const getCars = async () => {
 export const parseCarList = (vendorList) =>
   vendorList.reduce((accu, vendor) => {
     const vendorName = vendor.Vendor["@Name"];
+    const vendorCode = vendor.Vendor["@Code"];
     const flatCarList = vendor.VehAvails.map((car) => {
       car.vendorName = vendorName;
+      car.code = `${vendorCode}-${car.Vehicle["@Code"]}`;
       return car;
     });
 
@@ -36,6 +38,7 @@ export const parseCarList = (vendorList) =>
  */
 export const sortCarList = (carList, sortBy) =>
   carList.sort((a, b) => {
+    // TODO: add more sorting options
     switch (sortBy) {
       case "price":
       default:
@@ -43,7 +46,6 @@ export const sortCarList = (carList, sortBy) =>
           +a.TotalCharge["@EstimatedTotalAmount"] -
           +b.TotalCharge["@EstimatedTotalAmount"]
         );
-        break;
     }
   });
 
@@ -108,6 +110,10 @@ export const renderCarList = (carList, booking) => {
 
     //VENDOR
     clone.querySelector(".car-card__vendor").textContent = car.vendorName;
+
+    clone
+      .querySelector(".car-card__more-details")
+      .setAttribute("data-car-code", car.code);
 
     // render
     const carGrid = document.querySelector("#car-grid");
