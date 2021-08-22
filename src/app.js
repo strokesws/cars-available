@@ -14,6 +14,10 @@ const removeLoader = () => {
   carGrid.removeAttribute("style");
 };
 
+const displayDetails = () => {
+  document.querySelector(".modal").removeAttribute("style");
+};
+
 document.addEventListener("DOMContentLoaded", async () => {
   const data = await getCars();
 
@@ -26,5 +30,15 @@ document.addEventListener("DOMContentLoaded", async () => {
   const flatCarList = parseCarList(VehVendorAvails);
   const sortedList = sortCarList(flatCarList, "price");
   renderCarList(sortedList, booking);
+
+  const carGrid = document.getElementById("car-grid");
+  carGrid.addEventListener("click", (event) => {
+    const { className } = event.target;
+    if (className.includes("car-card__more-details")) {
+      const carCode = event.target.getAttribute("data-car-code");
+      displayDetails(carCode);
+    }
+  });
+
   removeLoader();
 });
