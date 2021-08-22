@@ -20,8 +20,8 @@
 
 
 <template id="car-card-template">
-  <div class="car-card m-2 p-4 bg-blue-500 rounded-md">
-    <h2 class="car-card__name"></h2>
+  <div class="car-card m-2 p-4 bg-blue-500 text-white rounded-md">
+    <h2 class="car-card__name text-2xl font-semibold"></h2>
 
     <p>
       <span class="car-card__transmission-type"></span>
@@ -56,10 +56,10 @@
 
     <img class="car-card__picture object-contain my-6" />
 
-    <p class="car-card__value"></p>
-    <p class="car-card__vendor"></p>
+    <h3 class="car-card__value text-xl text-right font-semibold"></h3>
+    <h3 class="car-card__vendor text-xl text-right"></h3>
 
-    <button type="button">More Details</button>
+    <button type="button" class="btn btn--block bg-yellow-600 mt-4 hover:bg-yellow-700">More Details</button>
   </div>
 </template>
 
