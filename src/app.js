@@ -8,7 +8,7 @@ import "./styles/styles.scss";
  */
 const removeLoader = () => {
   document.querySelector(".loader").remove();
-  const carGrid = document.querySelector("#car-grid");
+  const carGrid = document.querySelector("#app");
   carGrid.classList.remove("hidden");
 };
 
