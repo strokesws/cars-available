@@ -18,12 +18,12 @@ document.addEventListener("DOMContentLoaded", async () => {
   const data = await getCars();
 
   if (!data && !data.length) return removeLoader();
-  const { VehAvailRSCore } = data[0];
+  const { VehRentalCore, VehVendorAvails } = data[0].VehAvailRSCore;
 
-  const booking = parseBooking(VehAvailRSCore.VehRentalCore);
+  const booking = parseBooking(VehRentalCore);
   renderBookingDetails(booking);
 
-  const flatCarList = parseCarList(VehAvailRSCore.VehVendorAvails);
+  const flatCarList = parseCarList(VehVendorAvails);
   const sortedList = sortCarList(flatCarList, "price");
   renderCarList(sortedList, booking);
   removeLoader();
