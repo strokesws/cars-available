@@ -38,7 +38,6 @@ export const renderBookingDetails = (booking) => {
 
   // RETURN DATE TIME
   const returnDateTime = new Date(booking["@ReturnDateTime"]).toLocaleString();
-  console.log(booking);
   document.querySelector(".booking-details__return-date-time").textContent =
     returnDateTime;
 };
