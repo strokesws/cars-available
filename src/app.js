@@ -42,6 +42,36 @@ const parseBooking = (booking) => {
 };
 
 /*
+ * Renders booking details
+ * @param {object} booking Booking details
+ */
+const renderBookingDetails = (booking) => {
+  // DAYS
+  document.querySelector(".booking-details__days").textContent = `${
+    booking.days
+  } ${booking.days > 1 ? "days" : "day"}`;
+
+  // PICK UP LOCATION
+  document.querySelector(".booking-details__pick-up-location").textContent =
+    booking.PickUpLocation["@Name"];
+
+  // PICK UP DATE TIME
+  const pickUpDateTime = new Date(booking["@PickUpDateTime"]).toLocaleString();
+  document.querySelector(".booking-details__pick-up-date-time").textContent =
+    pickUpDateTime;
+
+  // RETURN LOCATION
+  document.querySelector(".booking-details__return-location").textContent =
+    booking.ReturnLocation["@Name"];
+
+  // RETURN DATE TIME
+  const returnDateTime = new Date(booking["@ReturnDateTime"]).toLocaleString();
+  console.log(booking);
+  document.querySelector(".booking-details__return-date-time").textContent =
+    returnDateTime;
+};
+
+/*
  * Parses the list of vendors and cars into a flat array
  * @param {object} vendorList List of vendors with available cars
  * @return {array} List of cars available
@@ -151,6 +181,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   const { VehAvailRSCore } = data[0];
 
   const booking = parseBooking(VehAvailRSCore.VehRentalCore);
+  renderBookingDetails(booking);
 
   const flatCarList = parseCarList(VehAvailRSCore.VehVendorAvails);
   const sortedList = sortList(flatCarList, "price");
