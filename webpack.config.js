@@ -7,19 +7,15 @@ module.exports = {
   entry: {
     app: "./src/app.js",
   },
-  watch: true,
   watchOptions: {
     aggregateTimeout: 500,
     poll: 1000,
     ignored: /node_modules/,
   },
-  devtool: "source-maps",
+  devtool: "eval",
   devServer: {
-    contentBase: path.join(__dirname, "src"),
-    watchContentBase: true,
     hot: true,
     open: true,
-    inline: true,
   },
   plugins: [
     new HtmlWebpackPlugin({
