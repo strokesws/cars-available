@@ -52,3 +52,7 @@ body {
     transform: rotate(360deg);
   }
 }
+
+.modal {
+  transition: opacity 0.25s ease;
+}
