@@ -53,8 +53,9 @@ export const sortCarList = (carList, sortBy) =>
  * Renders list of cars on the HTML
  * @param {array} carList List of cars to be rendered
  * @param {object} booking Booking information
+ * @param {object} renderSelector Selector where list should be rendered
  */
-export const renderCarList = (carList, booking) => {
+export const renderCarList = (carList, booking, renderSelector) => {
   const template = document.querySelector("#car-card-template");
   // To be used in the currency format
   const locale = window.navigator.userLanguage || window.navigator.language;
@@ -116,7 +117,7 @@ export const renderCarList = (carList, booking) => {
       .setAttribute("data-car-code", car.code);
 
     // render
-    const carGrid = document.querySelector("#car-grid");
-    carGrid.appendChild(clone);
+    const render = document.querySelector(renderSelector);
+    if (render) render.appendChild(clone);
   });
 };
