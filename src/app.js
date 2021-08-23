@@ -48,7 +48,10 @@ document.addEventListener("DOMContentLoaded", async () => {
   renderBookingDetails(booking);
 
   const flatCarList = parseCarList(VehVendorAvails);
-  const sortedList = sortCarList(flatCarList, "price");
+  const sortedList = sortCarList(flatCarList, "price-low");
+  const sorterOptions = document.querySelectorAll(".select-option");
+  if (sorterOptions.length)
+    sorterOptions[0].setAttribute("selected", "selected");
   renderCarList(sortedList, booking, "#car-grid");
 
   const body = document.querySelector("body");
@@ -60,6 +63,10 @@ document.addEventListener("DOMContentLoaded", async () => {
       toggleModal();
     } else if (className.includes("modal__close")) {
       toggleModal();
+    } else if (className.includes("select-option")) {
+      const filterBy = event.target.value;
+      const sortedList = sortCarList(flatCarList, filterBy);
+      renderCarList(sortedList, booking, "#car-grid");
     }
   });
 
