@@ -68,6 +68,11 @@ export const renderCarList = (carList, booking, renderSelector) => {
     const clone = template.content.cloneNode(true);
     const { Vehicle } = car;
 
+    if (renderSelector === ".modal__body") {
+      debugger;
+      clone.querySelector(".car-card").classList.toggle("car-card--modal");
+    }
+
     // NAME
     clone.querySelector(".car-card__name").textContent =
       Vehicle.VehMakeModel["@Name"];

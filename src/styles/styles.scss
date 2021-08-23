@@ -9,6 +9,25 @@ body {
 .car-card {
   box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.2),
     0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12) !important;
+
+  &.car-card--modal {
+    width: 100%;
+    margin: 0 0 1rem;
+    flex-direction: row;
+
+    .car-card__info {
+      order: 1;
+      flex-grow: 1;
+    }
+
+    .car-card__info2 {
+      order: 2;
+    }
+
+    .car-card__more-details {
+      display: none;
+    }
+  }
 }
 
 .btn {
@@ -55,23 +74,4 @@ body {
 
 .modal {
   transition: opacity 0.25s ease;
-
-  .car-card {
-    width: 100%;
-    margin: 0 0 1rem;
-    flex-direction: row;
-
-    &__info {
-      order: 1;
-      flex-grow: 1;
-    }
-
-    &__info2 {
-      order: 2;
-    }
-
-    &__more-details {
-      display: none;
-    }
-  }
 }
