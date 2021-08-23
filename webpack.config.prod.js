@@ -41,7 +41,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.css$/,
+        test: /\.scss$/,
         include: path.resolve(__dirname, "src"),
         exclude: /node_modules/,
         use: [
@@ -56,6 +56,10 @@ module.exports = {
             },
           },
           "postcss-loader",
+          "sass-loader",
+          {
+            loader: "postcss-loader",
+          },
         ],
       },
       {
