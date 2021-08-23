@@ -16,14 +16,23 @@ const removeLoader = () => {
   modal.removeAttribute("style");
 };
 
+/*
+ * Show/hide Car details modal
+ */
 const toggleModal = () => {
   const modal = document.querySelector(".modal");
   modal.classList.toggle("opacity-0");
   modal.classList.toggle("pointer-events-none");
 };
 
-const displayDetails = (carsList, booking, carCode) => {
-  const foundCar = carsList.find((car) => car.code === carCode);
+/*
+ * Display car details
+ * @param {object} carList List of cars to search
+ * @param {object} booking Booking details
+ * @param {string} carCode Car code to find
+ */
+const displayDetails = (carList, booking, carCode) => {
+  const foundCar = carList.find((car) => car.code === carCode);
   if (!foundCar) return;
   renderCarList([foundCar], booking, ".modal__body");
 };
