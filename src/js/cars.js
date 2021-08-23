@@ -56,7 +56,11 @@ export const sortCarList = (carList, sortBy) =>
  * @param {object} renderSelector Selector where list should be rendered
  */
 export const renderCarList = (carList, booking, renderSelector) => {
+  const render = document.querySelector(renderSelector);
   const template = document.querySelector("#car-card-template");
+  if (!render || !template) return;
+  render.replaceChildren();
+
   // To be used in the currency format
   const locale = window.navigator.userLanguage || window.navigator.language;
 
@@ -117,7 +121,6 @@ export const renderCarList = (carList, booking, renderSelector) => {
       .setAttribute("data-car-code", car.code);
 
     // render
-    const render = document.querySelector(renderSelector);
-    if (render) render.appendChild(clone);
+    render.appendChild(clone);
   });
 };
