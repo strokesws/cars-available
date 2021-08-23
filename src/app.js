@@ -40,7 +40,8 @@ const displayDetails = (carList, booking, carCode) => {
 document.addEventListener("DOMContentLoaded", async () => {
   const data = await getCars();
 
-  if (!data && !data.length) return removeLoader();
+  if (!data || !data.length) return removeLoader();
+
   const { VehRentalCore, VehVendorAvails } = data[0].VehAvailRSCore;
 
   const booking = parseBooking(VehRentalCore);
