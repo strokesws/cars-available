@@ -69,7 +69,6 @@ export const renderCarList = (carList, booking, renderSelector) => {
     const { Vehicle } = car;
 
     if (renderSelector === ".modal__body") {
-      debugger;
       clone.querySelector(".car-card").classList.toggle("car-card--modal");
     }
 
