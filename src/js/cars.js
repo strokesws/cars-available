@@ -91,7 +91,7 @@ export const renderCarList = (carList, booking, renderSelector) => {
     if (!!Vehicle["@AirConditionInd"]) {
       clone
         .querySelector(".car-card__air-conditioning")
-        .classList.remove("hidden");
+        .classList.toggle("hidden");
     }
 
     // PICTURE
