@@ -22,8 +22,10 @@ const toggleModal = () => {
   modal.classList.toggle("pointer-events-none");
 };
 
-const displayDetails = () => {
-  toggleModal();
+const displayDetails = (carsList, booking, carCode) => {
+  const foundCar = carsList.find((car) => car.code === carCode);
+  if (!foundCar) return;
+  renderCarList([foundCar], booking, ".modal__body");
 };
 
 document.addEventListener("DOMContentLoaded", async () => {
@@ -44,7 +46,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     const { className } = event.target;
     if (className.includes("car-card__more-details")) {
       const carCode = event.target.getAttribute("data-car-code");
-      displayDetails(carCode);
+      displayDetails(sortedList, booking, carCode);
+      toggleModal();
     } else if (className.includes("modal__close")) {
       toggleModal();
     }

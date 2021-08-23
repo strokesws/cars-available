@@ -38,7 +38,7 @@
     style="display: none;">
     <div class="modal__overlay absolute w-full h-full bg-gray-900 opacity-50"></div>
 
-    <div class="modal__container bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg z-50 overflow-y-auto">
+    <div class="modal__container bg-white w-11/12 mx-auto rounded shadow-lg z-50 overflow-y-auto">
       <div class="modal__content py-4 text-left px-6">
         <div class="flex justify-between items-center pb-3">
           <p class="text-2xl font-semibold">Car Details</p>
@@ -47,7 +47,7 @@
           </span>
         </div>
 
-        <div class="modal__body"></div>
+        <div class="modal__body flex flex-wrap "></div>
       </div>
     </div>
   </div>
@@ -55,48 +55,52 @@
 
 
 <template id="car-card-template">
-  <div class="car-card m-2 p-4 bg-blue-500 text-white rounded-md">
+  <div class="car-card m-2 p-4 bg-blue-500 text-white rounded-md flex flex-col">
     <h2 class="car-card__name text-2xl font-semibold"></h2>
 
-    <p>
-      <span class="car-card__transmission-type"></span>
+    <div class="car-card__info">
+      <p>
+        <span class="car-card__transmission-type"></span>
 
-      <span class="car-card__fuel-type"></span>
-    </p>
+        <span class="car-card__fuel-type"></span>
+      </p>
 
-    <p>
-      <span class="mr-1">
-        <span class="sr-only">Passenger Quantity:</span>
-        <span class="mdi mdi-car-seat"></span>
-        <span class="car-card__passenger-quantity"></span>
-      </span>
+      <p>
+        <span class="mr-1">
+          <span class="sr-only">Passenger Quantity:</span>
+          <span class="mdi mdi-car-seat"></span>
+          <span class="car-card__passenger-quantity"></span>
+        </span>
 
-      <span class="mr-1">
-        <span class="sr-only">Baggage Quantity:</span>
-        <span class="mdi mdi-briefcase"></span>
-        <span class="car-card__baggage-quantity"></span>
-      </span>
+        <span class="mr-1">
+          <span class="sr-only">Baggage Quantity:</span>
+          <span class="mdi mdi-briefcase"></span>
+          <span class="car-card__baggage-quantity"></span>
+        </span>
 
-      <span class="mr-1">
-        <span class="sr-only">Door count:</span>
-        <span class="mdi mdi-car-door"></span>
-        <span class="car-card__door-count"></span>
-      </span>
+        <span class="mr-1">
+          <span class="sr-only">Door count:</span>
+          <span class="mdi mdi-car-door"></span>
+          <span class="car-card__door-count"></span>
+        </span>
 
-      <span class="car-card__air-conditioning mr-1 hidden">
-        <span class="sr-only">Air Conditioning</span>
-        <span class="mdi mdi-thermometer-lines"></span>
-      </span>
-    </p>
+        <span class="car-card__air-conditioning mr-1 hidden">
+          <span class="sr-only">Air Conditioning</span>
+          <span class="mdi mdi-thermometer-lines"></span>
+        </span>
+      </p>
+    </div>
 
     <img class="car-card__picture object-contain my-6" />
 
-    <h3 class="car-card__value text-xl text-right font-semibold"></h3>
-    <h3 class="car-card__vendor text-xl text-right"></h3>
+    <div class="car-card__info2">
+      <h3 class="car-card__value text-xl text-right font-semibold"></h3>
+      <h3 class="car-card__vendor text-xl text-right"></h3>
 
-    <button type="button" class="car-card__more-details btn btn--block bg-yellow-600 mt-4 hover:bg-yellow-700">
-      More Details
-    </button>
+      <button type="button" class="car-card__more-details btn btn--block bg-yellow-600 mt-4 hover:bg-yellow-700">
+        More Details
+      </button>
+    </div>
   </div>
 </template>
 

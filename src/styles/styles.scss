@@ -55,4 +55,19 @@ body {
 
 .modal {
   transition: opacity 0.25s ease;
+
+  .car-card {
+    &__info {
+      order: 1;
+      flex-grow: 1;
+    }
+
+    &__info2 {
+      order: 2;
+    }
+
+    &__more-details {
+      display: none;
+    }
+  }
 }
