@@ -38,9 +38,31 @@ export const parseCarList = (vendorList) =>
  */
 export const sortCarList = (carList, sortBy) =>
   carList.sort((a, b) => {
-    // TODO: add more sorting options
     switch (sortBy) {
-      case "price":
+      case "vendor": {
+        // localeCompare can deal with unicode and non-english alphabets
+        const locale =
+          window.navigator.userLanguage || window.navigator.language;
+        return a.vendorName.localeCompare(b.vendorName, locale, {
+          sensitivity: "base",
+        });
+      }
+      case "passenger-high": {
+        const aPassenger = +a.Vehicle["@PassengerQuantity"].replace("5+", "6");
+        const bPassenger = +b.Vehicle["@PassengerQuantity"].replace("5+", "6");
+        return bPassenger - aPassenger;
+      }
+      case "passenger-low": {
+        const aPassenger = +a.Vehicle["@PassengerQuantity"].replace("5+", "6");
+        const bPassenger = +b.Vehicle["@PassengerQuantity"].replace("5+", "6");
+        return aPassenger - bPassenger;
+      }
+      case "price-high":
+        return (
+          +b.TotalCharge["@EstimatedTotalAmount"] -
+          +a.TotalCharge["@EstimatedTotalAmount"]
+        );
+      case "price-low":
       default:
         return (
           +a.TotalCharge["@EstimatedTotalAmount"] -
