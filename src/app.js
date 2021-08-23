@@ -12,10 +12,18 @@ const removeLoader = () => {
   document.querySelector(".loader").remove();
   const carGrid = document.querySelector("#app");
   carGrid.removeAttribute("style");
+  const modal = document.querySelector(".modal");
+  modal.removeAttribute("style");
+};
+
+const toggleModal = () => {
+  const modal = document.querySelector(".modal");
+  modal.classList.toggle("opacity-0");
+  modal.classList.toggle("pointer-events-none");
 };
 
 const displayDetails = () => {
-  document.querySelector(".modal").removeAttribute("style");
+  toggleModal();
 };
 
 document.addEventListener("DOMContentLoaded", async () => {
@@ -29,14 +37,16 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   const flatCarList = parseCarList(VehVendorAvails);
   const sortedList = sortCarList(flatCarList, "price");
-  renderCarList(sortedList, booking);
+  renderCarList(sortedList, booking, "#car-grid");
 
-  const carGrid = document.getElementById("car-grid");
-  carGrid.addEventListener("click", (event) => {
+  const body = document.querySelector("body");
+  body.addEventListener("click", (event) => {
     const { className } = event.target;
     if (className.includes("car-card__more-details")) {
       const carCode = event.target.getAttribute("data-car-code");
       displayDetails(carCode);
+    } else if (className.includes("modal__close")) {
+      toggleModal();
     }
   });
 
